@@ -1,1 +1,2 @@
 # No external dependencies required for version 1
+paramiko

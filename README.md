@@ -21,6 +21,7 @@ In network operations, engineers need to identify faults quickly and understand 
 - parsing command line network device output
 - operational health checking logic
 - clear reporting for troubleshooting
+- generating and saving a structured network health report to a text file
 
 ## Project Structure
 
@@ -29,6 +30,7 @@ network-health-check/
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
+├── report.txt
 ├── data/
 │   └── sample_show_ip_interface_brief.txt
 └── src/
@@ -36,4 +38,3 @@ network-health-check/
     ├── parser.py
     ├── checker.py
     └── reporter.py
-

@@ -11,7 +11,6 @@ def main() -> None:
     report = generate_report(results)
 
     print(report)
-
     save_report_to_file(report)
 
 

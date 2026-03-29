@@ -5,3 +5,4 @@ __pycache__/
 .env
 report.txt
 data/ssh_output.txt
+linux_report.txt

@@ -6,3 +6,5 @@ __pycache__/
 report.txt
 data/ssh_output.txt
 linux_report.txt
+data/*_ssh_output.txt
+data/*_linux_report.txt

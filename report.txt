@@ -1,0 +1,37 @@
+NETWORK HEALTH CHECK REPORT
+==================================================
+Interface : GigabitEthernet0/0
+IP Address: 192.168.1.1
+Status    : up
+Protocol  : up
+Health    : HEALTHY
+Reason    : Interface is operational.
+--------------------------------------------------
+Interface : GigabitEthernet0/1
+IP Address: unassigned
+Status    : administratively down
+Protocol  : down
+Health    : INFO
+Reason    : Interface is administratively down.
+--------------------------------------------------
+Interface : GigabitEthernet0/2
+IP Address: 10.0.0.1
+Status    : up
+Protocol  : down
+Health    : CRITICAL
+Reason    : Interface is up but line protocol is down.
+--------------------------------------------------
+Interface : Loopback0
+IP Address: 172.16.255.1
+Status    : up
+Protocol  : up
+Health    : HEALTHY
+Reason    : Interface is operational.
+--------------------------------------------------
+Interface : Vlan1
+IP Address: unassigned
+Status    : down
+Protocol  : down
+Health    : WARNING
+Reason    : Interface is down.
+--------------------------------------------------

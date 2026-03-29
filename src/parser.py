@@ -4,6 +4,7 @@ from typing import List, Dict
 def parse_show_ip_interface_brief(file_path: str) -> List[Dict[str, str]]:
     """
     Parse Cisco-like 'show ip interface brief' output into a list of dictionaries.
+    Handles multi-word interface status such as 'administratively down'.
     """
     interfaces = []
 
@@ -16,17 +17,28 @@ def parse_show_ip_interface_brief(file_path: str) -> List[Dict[str, str]]:
         if len(parts) < 6:
             continue
 
-        interface_data = {
-            "interface": parts[0],
-            "ip_address": parts[1],
-            "ok": parts[2],
-            "method": parts[3],
-            "status": parts[4],
-            "protocol": parts[5],
-        }
+        interface_name = parts[0]
+        ip_address = parts[1]
+        ok = parts[2]
+        method = parts[3]
 
-        if len(parts) > 6:
-            interface_data["protocol"] = " ".join(parts[5:])
+        remaining = parts[4:]
+
+        if remaining[0] == "administratively" and len(remaining) >= 3:
+            status = "administratively down"
+            protocol = remaining[2]
+        else:
+            status = remaining[0]
+            protocol = remaining[1]
+
+        interface_data = {
+            "interface": interface_name,
+            "ip_address": ip_address,
+            "ok": ok,
+            "method": method,
+            "status": status,
+            "protocol": protocol,
+        }
 
         interfaces.append(interface_data)
 

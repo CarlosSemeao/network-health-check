@@ -19,3 +19,10 @@ def generate_report(results: List[Dict[str, str]]) -> str:
         lines.append("-" * 50)
 
     return "\n".join(lines)
+
+def save_report_to_file(report: str, output_path: str = "report.txt") -> None:
+    """
+    Save the generated report to a file.
+    """
+    with open(output_path, "w", encoding="utf-8") as file:
+        file.write(report)

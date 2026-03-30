@@ -12,6 +12,7 @@ def main() -> None:
     key_filename = "/home/carlossemeao/.ssh/id_ed25519"
 
     hosts = load_hosts(hosts_file)
+    summary = []
 
     for host in hosts:
         print(f"\n=== Checking host: {host} ===")
@@ -32,9 +33,20 @@ def main() -> None:
                 file.write(report)
 
             print(report)
+            summary.append((host, "SUCCESS", ""))
 
         except Exception as error:
-            print(f"FAILED to check host {host}: {error}")
+            error_message = str(error)
+            print(f"FAILED to check host {host}: {error_message}")
+            summary.append((host, "FAILED", error_message))
+
+    print("\nCHECK SUMMARY")
+    print("=" * 50)
+    for host, status, detail in summary:
+        if detail:
+            print(f"{host:<15} {status:<10} {detail}")
+        else:
+            print(f"{host:<15} {status}")
 
 
 if __name__ == "__main__":
